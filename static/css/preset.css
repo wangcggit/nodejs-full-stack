@@ -1,0 +1,4 @@
+[class^="rect-"],
+[class*=" rect-"] {
+  display: inline-block;
+}

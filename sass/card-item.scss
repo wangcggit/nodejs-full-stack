@@ -1,0 +1,16 @@
+.card-item {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+    .ci-w-img {
+        position: relative;
+        .ci-w-tag {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+}

@@ -1,0 +1,86 @@
+//混合宏工具
+//生成图标字体类
+@mixin set_icon($icons) {
+    @each $icon in $icons {
+        .icon-#{nth($icon,1)}::before {
+            content:"#{nth($icon,2)}"
+        }
+    }
+}
+
+//生成各种预定义的字号
+@mixin auto_gen_font_size_class() {
+    @for $i from 0 to 11 {
+        @if $i==0 {
+            @for $i from 1 to 10 {
+                .fsize-d#{$i} {
+                    font-size:#{$i/10}rem;
+                }
+            }
+        }
+        @else if $i==1 {
+            @for $i from 1 to 10 {
+                .fsize-1d#{$i} {
+                    font-size:#{$i/10 + 1}rem;
+                }
+            }
+        }
+        @else if $i>1 {
+            .fsize-#{$i} {
+                font-size:#{$i}rem;
+            }
+            .fsize-#{$i}d5 {
+                font-size:#{$i + 0.5}rem;
+            }
+        }
+    }
+}
+
+//边距设置函数
+@mixin set_padding($dir:"all", $val:0) {
+    @if $dir=="all" {
+        padding: $val;
+    }
+    @else if $dir=="v" {
+        padding-top: $val;
+        padding-bottom: $val;
+    }
+    @else if $dir=="h" {
+        padding-left: $val;
+        padding-right: $val;
+    }
+    @else {
+        padding-#{$dir}: $val; //sass变量一定是前缀为“$”号的一个变量，万万不可缺省$号！！！
+    }
+}
+
+//生成各种内边距
+@mixin auto_gen_padding_class() {
+    $dirs: ("-t" "top"), ("-b" "bottom"), ("-l" "left"), ("-r" "right"), ("-v" "v"), ("-h" "h"), ("" "all");
+    @each $dir in $dirs {
+        @for $i from 1 to 11 {
+            .pad#{nth($dir,1)}-#{$i} {
+                @include set_padding(nth($dir, 2), #{$i}rem);
+            }
+            .pad#{nth($dir,1)}-#{$i}d5 {
+                @include set_padding(nth($dir, 2), #{$i+0.5}rem);
+            }
+        }
+    }
+}
+
+[class^="rect-"],
+[class*=" rect-"] {
+    display: inline-block;
+}
+
+//生成各种规格正方形
+@mixin auto_gen_rect_class() {
+    @for $i from 1 to 11 {
+        .rect-#{$i} {
+            width:#{$i}rem;
+            height:#{$i}rem;
+            line-height:#{$i}rem;
+        }
+    }
+}

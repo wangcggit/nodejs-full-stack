@@ -1,0 +1,4 @@
+@import "preset";
+@include auto_gen_font_size_class();
+@include auto_gen_padding_class();
+@include auto_gen_rect_class();

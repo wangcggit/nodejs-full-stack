@@ -1,0 +1,29 @@
+@import "preset.scss";
+@font-face {
+    font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot');
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'), url('../iconfont/iconfont.woff2') format('woff2'), url('../iconfont/iconfont.woff') format('woff'), url('../iconfont/iconfont.ttf') format('truetype'), url('../iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    color: blue;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$icons: ("pos" "\e619"),
+("position1" "\e84a"),
+("position2" "\e7ad"),
+("loge" "\e654"),
+("like" "\e615"),
+("rili" "\e61c"),
+("biaoqian" "\e503"),
+("liwu" "\e603"),
+("xiaolian" "\e61d"),
+("shijian" "\e60f"),
+("ren" "\e617");
+@include set_icon($icons);

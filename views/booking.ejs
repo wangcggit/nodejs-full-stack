@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("common/head.ejs")%>
+
+        <title>预订行程</title>
+</head>
+
+<body>
+    <%- include("common/header.ejs") %>
+
+        <!-- 页顶部背景图 -->
+        <section class="sub-banner"></section>
+
+
+        <!-- 预定(页面主体) -->
+        <section class="container pad-v-5">
+            <h3 class="text-center pad-b-3 fsize-2d5">预订行程</h3>
+            <div class="row">
+                <!-- 表单 -->
+                <div class="col-5">
+                    <form class="row" id="booking_fm">
+                        <!-- col-类之前必须有 row类，一个row类可折叠多行 -->
+                        <div class="col-6 form-group">
+                            <!-- 通过包裹一层控件组，增加各控件之间的间隔（外边距） -->
+                            <input class="form-control" type="text" name="user" id="user" placeholder="姓名">
+                        </div>
+                        <div class="col-6 form-group">
+                            <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="col-6 form-group">
+                            <input class="form-control" type="tel" name="tel" id="tel" placeholder="电话">
+                        </div>
+                        <div class="col-6 form-group">
+                            <input class="form-control" type="date" name="date" id="date" placeholder="日期">
+                            <!-- 加bootstrap类form-control可保证控件外观一致 -->
+                        </div>
+                        <div class="col-6 form-group">
+                            <select class="form-control" name="adult" id="adult">
+                            <option value="0">成人</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 或 更多</option>
+                        </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <select class="form-control" name="child" id="child">
+                            <option value="0">儿童</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option> class="form-control"
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 或 更多</option>
+                        </select>
+                        </div>
+                        <div class="col-12 form-group">
+                            <textarea class="form-control" name="message" id="message" cols="30" rows="5">信息</textarea>
+                        </div>
+                        <div class="col-12 form-group">
+                            <input class="btn btn-primary w-100 text-light" type="submit" value="立即预订" id="submit">
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- 行程说明 -->
+                <div class="col-7">
+                    <div class="pad-l-5">
+                        <img class="pad-b-2" src="image/<%= pro_id %>.jpg" alt="">
+                        <h4 class="pad-b-1">行程说明</h4>
+                        <p>【
+                            <%= addr %>】
+                                <%= title %>
+                        </p>
+                        <p>
+                            <%= desc %>
+                        </p>
+                        <p>该品牌在法瑞意目的地满意度 <span class="font-weight-bold text-primary">97%</span> | 高于法瑞意平均满意度 <span class="font-weight-bold text-primary">1.5%</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 页面底部 -->
+        <%- include("common/footer.ejs")%>
+
+            <script>
+                $("form").on("submit", function() {
+                    let send_data = {
+                        pro_id: "<% pro_id %>"
+                    }
+                    $(this).find("[name]").each((index, el) => {
+                        send_data[$(el).attr("name")] = $(el).val(); //扩充对象属性，一定要使用“属性名=属性值”的方式
+                    });
+                    $.post("/booking", send_data, (data) => {
+                        if (data.code == 200) {
+                            alert("预订成功！");
+                        };
+                        return false;
+                    })
+                })
+            </script>
+
+            <!-- <script>
+                $("form").on("submit", function() {
+                    let send_data = {
+                        pro_id: "<%= pro_id %>"
+                    };
+                    $(this).find("[name]").each((index, el) => {
+                        send_data[$(el).attr("name")] = $(el).val();
+                    });
+                    $.post("/booking", {
+                        send_data
+                    }, (data) => {
+                        if (data.code == 200) {
+                            alert("预订成功！");
+                        }
+                    })
+                    return false;
+                })
+            </script> -->
+</body>
+
+</html>

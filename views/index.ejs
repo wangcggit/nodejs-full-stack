@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("common/head.ejs")%>
+        <title>盛大之旅官网</title>
+</head>
+
+<body>
+    <!-- 页面头部 -->
+    <%- include("common/header.ejs") %>
+
+        <!-- 轮播图banner -->
+        <section id="demo" class="carousel slide" data-ride="carousel">
+            <!-- slide 至关重要，是左右切换按钮能否启效的关键，！！！惨惨惨惨惨 单词写错 slide 误写为 "silde" -->
+            <!-- 指示符 -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+            </ul>
+            <!-- 轮播图片 -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="slider text-light">
+                        <img class="w-100" src="image/banner1.jpg" alt="">
+                        <div class="slider-description">
+                            <h1 class="fsize-3 font-weight-bold">永远不要让记忆比梦想更伟大.</h1>
+                            <p class="pad-v-2 fsize-2">Never Let Your Memories Be Greater Than Your Dreams.</p>
+                            <p><a class="btn btn-outline-light btn-lg" href="pro_list ">关于这里</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-light btn-lg" href="booking ">预定旅行</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slider text-light">
+                        <img class="w-100" src="image/banner2.jpg" alt="">
+                        <div class="slider-description">
+                            <h1 class="fsize-3 font-weight-bold">梦想，并不奢侈，只要勇敢地迈出第一步.</h1>
+                            <p class="pad-v-2 fsize-2">Dreams are not luxuries, as long as they take the first step.</p>
+                            <p><a class="btn btn-outline-light btn-lg" href="pro_list ">关于这里</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-light btn-lg" href="booking ">预定旅行</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 左右切换按钮 -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next " href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </section>
+
+        <!-- 平台介绍 -->
+        <section class="container pad-v-5">
+            <div class="row">
+                <div class="col-6">
+
+                    <p class="fsize-1d5">
+                        <%- title %>
+                    </p>
+                    <% for(var i=0;i < content.length;i++){ %>
+                        <p class="text-secondary text-justify">
+                            <%- content[i] %>
+                        </p>
+                        <%}%>
+                </div>
+                <div class="col-6">
+                    <img class="w-100 pad-l-5" src="image/p1.jpg" alt="">
+                </div>
+            </div>
+            <div class="row pad-t-3">
+                <div class="col-3 text-center">
+                    <div class="icon-xiaolian fsize-2d5"></div>
+                    <div class="fsize-2d5">1000+</div>
+                    <div class="text-secondary">客户满意度</div>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="icon-position1 fsize-2d5"></div>
+                    <div class="fsize-2d5">2271</div>
+                    <div class="text-secondary">游览 & 旅行</div>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="icon-like fsize-2d5"></div>
+                    <div class="fsize-2d5">2000+</div>
+                    <div class="text-secondary">总接待游客</div>
+                </div>
+                <div class="col-3 text-center">
+                    <div class="icon-liwu fsize-2d5"></div>
+                    <div class="fsize-2d5">20<small>+years</small></div>
+                    <div class="text-secondary">经验 & 收获</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 如何计划行程 -->
+        <section class="text-center bg-primary text-light pad-v-4">
+            <div class="container">
+                <h3 class="pad-b-3 fsize-2d5">如何计划行程</h3>
+                <div class="row">
+                    <div class="col-4 pad-h-4">
+                        <div class="rect-5 bg-light rounded-circle"><span class="icon-position2 fsize-2"></span></div>
+                        <p class="fsize-1d2 font-weight-bold pad-t-1">选择目的地</p>
+                        <p class="pad-h-2">选择一个合适的景点是尤为重要的，准备好开始一场美妙的旅行吧.</p>
+                    </div>
+                    <div class="col-4 pad-h-4">
+                        <div class="rect-5 bg-light rounded-circle"><span class="icon-rili fsize-2"></span></div>
+                        <p class="fsize-1d2 font-weight-bold pad-t-1">选择日期</p>
+                        <p class="pad-h-2">选择一个合适的景点是尤为重要的，准备好开始一场美妙的旅行吧.</p>
+                    </div>
+                    <div class="col-4 pad-h-4">
+                        <div class="rect-5 bg-light rounded-circle"><span class="icon-liwu fsize-2"></span></div>
+                        <p class="fsize-1d2 font-weight-bold pad-t-1">旅途愉快</p>
+                        <p class="pad-h-2">选择一个合适的景点是尤为重要的，准备好开始一场美妙的旅行吧.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 旅游套餐 -->
+        <section class="container pad-v-5 text-center ">
+            <h3 class="pad-b-1 fsize-2d5 ">我们的旅游套餐</h3>
+            <p class="text-secondary pad-b-3 ">Discover Our Tour Packages.</p>
+            <div class="row pad-b-2">
+                <% for(let i=0;i< pros.length;i++) {%>
+                    <div class="col-3 text-left text-secondary ">
+                        <a class="card-item " href="/booking?pro_id=<%= pros[i].pro_id %>">
+                            <div class="ci-w-img ">
+                                <img class="w-100 " src="image/<%= pros[i].pro_id %>.jpg " alt=" ">
+                                <div class="ci-w-tag text-light btn btn-primary "><span class="text-light icon-biaoqian "></span>
+                                    <%= pros[i].price %>￥</div>
+                            </div>
+                            <p class="pad-t-1 "><span class="icon-pos "></span>
+                                <%= pros[i].addr %>
+                            </p>
+                            <p class="text-dark font-weight-bold ">
+                                <%= pros[i].title %>
+                            </p>
+                            <p>
+                                <%= pros[i].desc %>
+                            </p>
+                            <p> <span class="icon-shijian "></span>>持续时间 : <span class="font-weight-bold "><%= pros[i].duration %>天</span></p>
+                        </a>
+                    </div>
+                    <%}%>
+
+            </div>
+            <a class="btn btn-primary btn-lg" href="/pro_list">查看全部套餐</a>
+        </section>
+
+        <!-- 页面底部 -->
+        <%- include("common/footer.ejs")%>
+</body>
+
+</html>

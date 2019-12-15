@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("common/head.ejs")%>
+
+        <title>产品服务</title>
+</head>
+
+<body>
+    <!-- 页面头部 -->
+    <%- include("common/header.ejs") %>
+
+        <!-- 页顶部背景图 -->
+        <section class="sub-banner"></section>
+
+
+        <!-- 旅游套餐(页面主体) -->
+        <section class="container pad-v-5 text-center">
+            <h3 class="pad-b-1 fsize-2d5">我们的旅游套餐</h3>
+            <p class="text-secondary pad-b-3">Discover Our Tour Packages.</p>
+            <div class="row">
+                <% for(let i=0;i< pros.length;i++) {%>
+                    <div class="col-3 text-left text-secondary ">
+                        <a class="card-item " href="/booking?pro_id=<%= pros[i].pro_id %>">
+                            <div class="ci-w-img ">
+                                <img class="w-100 " src="image/<%= pros[i].pro_id %>.jpg " alt=" ">
+                                <div class="ci-w-tag text-light btn btn-primary "><span class="text-light icon-biaoqian "></span>
+                                    <%= pros[i].price %>￥</div>
+                            </div>
+                            <p class="pad-t-1 "><span class="icon-pos "></span>
+                                <%= pros[i].addr %>
+                            </p>
+                            <p class="text-dark font-weight-bold ">
+                                <%= pros[i].title %>
+                            </p>
+                            <p>
+                                <%= pros[i].desc %>
+                            </p>
+                            <p> <span class="icon-shijian "></span>>持续时间 : <span class="font-weight-bold "><%= pros[i].duration %>天</span></p>
+                        </a>
+                    </div>
+                <%}%>
+            </div>
+
+            <ul class="pagination pad-t-3 justify-content-center">
+                <% if(cur_page > 1){ %>
+                    <li class="page-item"><a href="/pro_list?page=<%= cur_page*1-1 %>" class="page-link" id="prev">前一页</a></li>
+                    <% }else{ %>
+                        <li class="page-item"><a href="/pro_list?page=<%=pages%>" class="page-link" id="prev">前一页</a></li>
+                        <% } %>
+
+                            <% for(let i=1; i <= pages; i++){ %>
+                                <% if(cur_page*1 == i){ %>
+                                    <li class="page-item active">
+                                        <a href="/pro_list?page=<%= i %>" class="page-link">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% }else{ %>
+                                        <li class="page-item">
+                                            <a href="/pro_list?page=<%= i %>" class="page-link">
+                                                <%= i %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% } %>
+                                                <% if(cur_page < pages){ %>
+                                                    <li class="page-item"><a href="/pro_list?page=<%= cur_page*1+1 %>" class="page-link" id="next">后一页</a></li>
+                                                    <% }else{ %>
+                                                        <li class="page-item"><a href="/pro_list?page=1" class="page-link" id="next">后一页</a></li>
+                                                        <% } %>
+            </ul>
+        </section>
+
+        <!-- 页面底部 -->
+        <%- include("common/footer.ejs")%>
+</body>
+
+</html>
+
+</html>
